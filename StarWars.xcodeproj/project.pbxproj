@@ -44,6 +44,11 @@
 		AACEF81625DB09D000BFC129 /* FilePagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACEF81525DB09D000BFC129 /* FilePagePresenter.swift */; };
 		AACEF81925DB09EC00BFC129 /* FilePageRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACEF81825DB09EC00BFC129 /* FilePageRouter.swift */; };
 		AAEAA17525DDBB2A00425D3C /* EpisodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEAA17425DDBB2A00425D3C /* EpisodeViewModel.swift */; };
+		AAEAA19325DF2AD900425D3C /* PeoplePageAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEAA19225DF2AD900425D3C /* PeoplePageAssembly.swift */; };
+		AAEAA19625DF2AEC00425D3C /* PeoplePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEAA19525DF2AEC00425D3C /* PeoplePageView.swift */; };
+		AAEAA19925DF2B0200425D3C /* PeoplePageInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEAA19825DF2B0200425D3C /* PeoplePageInteractor.swift */; };
+		AAEAA19C25DF2B1C00425D3C /* PeoplePagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEAA19B25DF2B1C00425D3C /* PeoplePagePresenter.swift */; };
+		AAEAA1A025DF2B4100425D3C /* PeoplePageRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEAA19F25DF2B4100425D3C /* PeoplePageRouter.swift */; };
 		AAFCEA5025DC450300F95350 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFCEA4F25DC450300F95350 /* ButtonView.swift */; };
 		AAFCEA5525DC7C4A00F95350 /* FilmPageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFCEA5425DC7C4A00F95350 /* FilmPageTableViewCell.swift */; };
 		F56491633EC36A33D7102831 /* Pods_StarWars.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2FED9200752288D56C34656 /* Pods_StarWars.framework */; };
@@ -92,6 +97,11 @@
 		AACEF81525DB09D000BFC129 /* FilePagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilePagePresenter.swift; sourceTree = "<group>"; };
 		AACEF81825DB09EC00BFC129 /* FilePageRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilePageRouter.swift; sourceTree = "<group>"; };
 		AAEAA17425DDBB2A00425D3C /* EpisodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeViewModel.swift; sourceTree = "<group>"; };
+		AAEAA19225DF2AD900425D3C /* PeoplePageAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeoplePageAssembly.swift; sourceTree = "<group>"; };
+		AAEAA19525DF2AEC00425D3C /* PeoplePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeoplePageView.swift; sourceTree = "<group>"; };
+		AAEAA19825DF2B0200425D3C /* PeoplePageInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeoplePageInteractor.swift; sourceTree = "<group>"; };
+		AAEAA19B25DF2B1C00425D3C /* PeoplePagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeoplePagePresenter.swift; sourceTree = "<group>"; };
+		AAEAA19F25DF2B4100425D3C /* PeoplePageRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeoplePageRouter.swift; sourceTree = "<group>"; };
 		AAFCEA4F25DC450300F95350 /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		AAFCEA5425DC7C4A00F95350 /* FilmPageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmPageTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -438,6 +448,7 @@
 		AAEAA17F25DF27F300425D3C /* Router */ = {
 			isa = PBXGroup;
 			children = (
+				AAEAA19F25DF2B4100425D3C /* PeoplePageRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -452,6 +463,7 @@
 		AAEAA18125DF280A00425D3C /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				AAEAA19B25DF2B1C00425D3C /* PeoplePagePresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -459,6 +471,7 @@
 		AAEAA18225DF281500425D3C /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
+				AAEAA19825DF2B0200425D3C /* PeoplePageInteractor.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -466,6 +479,7 @@
 		AAEAA18325DF281C00425D3C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				AAEAA19525DF2AEC00425D3C /* PeoplePageView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -473,6 +487,7 @@
 		AAEAA18425DF282500425D3C /* Assembly */ = {
 			isa = PBXGroup;
 			children = (
+				AAEAA19225DF2AD900425D3C /* PeoplePageAssembly.swift */,
 			);
 			path = Assembly;
 			sourceTree = "<group>";
@@ -617,14 +632,17 @@
 			files = (
 				AACEF81625DB09D000BFC129 /* FilePagePresenter.swift in Sources */,
 				AA7172EB25D7FC74006F15E1 /* MainViewSection.swift in Sources */,
+				AAEAA19C25DF2B1C00425D3C /* PeoplePagePresenter.swift in Sources */,
 				AAFCEA5525DC7C4A00F95350 /* FilmPageTableViewCell.swift in Sources */,
 				AA7172DD25D751B2006F15E1 /* FilmsRouter.swift in Sources */,
 				AA7172BA25D719D5006F15E1 /* UITableViewCell+Entension.swift in Sources */,
 				AACEF80625DB08BE00BFC129 /* FilmPageAssembly.swift in Sources */,
 				AA7172AA25D70D1F006F15E1 /* MainPresenter.swift in Sources */,
+				AAEAA19325DF2AD900425D3C /* PeoplePageAssembly.swift in Sources */,
 				AA7172FC25D98987006F15E1 /* TabBarPresenter.swift in Sources */,
 				AA71731E25D9B24F006F15E1 /* FilmsDataInfo.swift in Sources */,
 				AA7172E825D7FC00006F15E1 /* MainOptionType.swift in Sources */,
+				AAEAA1A025DF2B4100425D3C /* PeoplePageRouter.swift in Sources */,
 				AACEF81025DB09A700BFC129 /* FilePageView.swift in Sources */,
 				AA7172D725D75180006F15E1 /* FilmsInterator.swift in Sources */,
 				AA7172D425D7516C006F15E1 /* FilmsView.swift in Sources */,
@@ -648,6 +666,8 @@
 				AA71730225D989A7006F15E1 /* TabBarRouter.swift in Sources */,
 				AA7172F925D98976006F15E1 /* TabBarView.swift in Sources */,
 				AA7172A725D70CD4006F15E1 /* MainInteractor.swift in Sources */,
+				AAEAA19925DF2B0200425D3C /* PeoplePageInteractor.swift in Sources */,
+				AAEAA19625DF2AEC00425D3C /* PeoplePageView.swift in Sources */,
 				AACEF7F425DAA8A400BFC129 /* UIActivityIndicatorView.swift in Sources */,
 				AA7172B025D70E91006F15E1 /* BaseViewController.swift in Sources */,
 				AA7172AD25D70DB0006F15E1 /* MainRouter.swift in Sources */,
