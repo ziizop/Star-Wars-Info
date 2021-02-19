@@ -28,15 +28,13 @@ extension FilmsInterator: FilmsInteratorInput {
                 self.presenter?.fetchSections(data)
                 print(data)                
                 // let dataInfo = data.results
-                for id in dataInfo {
-                    print(" ID_Episods: \(id.episode_id)")
-                    apiMager.getImageEpisods(id.episode_id) { result in
-                        switch result {
-                        case .success(let data):
-                            self.presenter?.fetchImages(data)
-                        case .failure(let error):
-                            error.localizedDescription
-                        }
+                apiMager.loadingImageInBanner(dataInfo) { [weak self] result in
+                    guard let self = self else { return }
+                    switch result {
+                    case .success(let data):
+                        self.presenter?.fetchImages(data)
+                    case .failure(let error):
+                        print(error.localizedDescription)
                     }
                 }
             case .failure(let error):

@@ -49,6 +49,7 @@
 		AAEAA19925DF2B0200425D3C /* PeoplePageInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEAA19825DF2B0200425D3C /* PeoplePageInteractor.swift */; };
 		AAEAA19C25DF2B1C00425D3C /* PeoplePagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEAA19B25DF2B1C00425D3C /* PeoplePagePresenter.swift */; };
 		AAEAA1A025DF2B4100425D3C /* PeoplePageRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEAA19F25DF2B4100425D3C /* PeoplePageRouter.swift */; };
+		AAEAA1A425DFE2A600425D3C /* FilmsEpisodEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEAA1A325DFE2A600425D3C /* FilmsEpisodEnum.swift */; };
 		AAFCEA5025DC450300F95350 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFCEA4F25DC450300F95350 /* ButtonView.swift */; };
 		AAFCEA5525DC7C4A00F95350 /* FilmPageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFCEA5425DC7C4A00F95350 /* FilmPageTableViewCell.swift */; };
 		F56491633EC36A33D7102831 /* Pods_StarWars.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2FED9200752288D56C34656 /* Pods_StarWars.framework */; };
@@ -102,6 +103,7 @@
 		AAEAA19825DF2B0200425D3C /* PeoplePageInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeoplePageInteractor.swift; sourceTree = "<group>"; };
 		AAEAA19B25DF2B1C00425D3C /* PeoplePagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeoplePagePresenter.swift; sourceTree = "<group>"; };
 		AAEAA19F25DF2B4100425D3C /* PeoplePageRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeoplePageRouter.swift; sourceTree = "<group>"; };
+		AAEAA1A325DFE2A600425D3C /* FilmsEpisodEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmsEpisodEnum.swift; sourceTree = "<group>"; };
 		AAFCEA4F25DC450300F95350 /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		AAFCEA5425DC7C4A00F95350 /* FilmPageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmPageTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -266,6 +268,7 @@
 				AA71731A25D9B20C006F15E1 /* FilmsAllData.swift */,
 				AA71731D25D9B24F006F15E1 /* FilmsDataInfo.swift */,
 				AAEAA17425DDBB2A00425D3C /* EpisodeViewModel.swift */,
+				AAEAA1A325DFE2A600425D3C /* FilmsEpisodEnum.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -666,6 +669,7 @@
 				AA71730225D989A7006F15E1 /* TabBarRouter.swift in Sources */,
 				AA7172F925D98976006F15E1 /* TabBarView.swift in Sources */,
 				AA7172A725D70CD4006F15E1 /* MainInteractor.swift in Sources */,
+				AAEAA1A425DFE2A600425D3C /* FilmsEpisodEnum.swift in Sources */,
 				AAEAA19925DF2B0200425D3C /* PeoplePageInteractor.swift in Sources */,
 				AAEAA19625DF2AEC00425D3C /* PeoplePageView.swift in Sources */,
 				AACEF7F425DAA8A400BFC129 /* UIActivityIndicatorView.swift in Sources */,
