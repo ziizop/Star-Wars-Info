@@ -37,7 +37,7 @@ extension MainPresenter: MainViewOutput {
             router?.showFilmsFormWithMain()
         case .people:
             print("Люди")
-            router?.showFilmsFormWithMain()
+            router?.showPeopleFromMain()
         case .species:
             print("Виды")
             router?.showFilmsFormWithMain()
@@ -58,6 +58,4 @@ extension MainPresenter: MainInteractorOutput {
     func fetchSections(_ section: [MainSectionViewModel]) {
         self.sections = section
     }
-    
-    
 }

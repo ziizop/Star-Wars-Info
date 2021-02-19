@@ -88,7 +88,7 @@ extension MainView: MainViewInput {
     }
 }
 
-    // MARK: - UITableViewDataSource
+    // MARK: - UITableViewDelegate
 
 extension MainView: UITableViewDelegate {
     
@@ -103,7 +103,7 @@ extension MainView: UITableViewDelegate {
         return presenter?.titleForHeaderInSection(section: mainSection)
     }
 }
-
+    // MARK: - UITableViewDataSource
 extension MainView: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {

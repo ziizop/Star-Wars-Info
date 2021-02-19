@@ -11,10 +11,6 @@ final class FilmsPresenter {
 
 extension FilmsPresenter: FilmViewOutput {
     
-    func didSelectViewModel(index: Int) {
-        
-    }
-    
     func viewDidLoad() {
         interactor?.makeData()
         view?.showLoading()
@@ -30,6 +26,10 @@ extension FilmsPresenter: FilmViewOutput {
     
     func didSelectImageRow(index: Int) -> UIImage {
         episodeImage[index]
+    }
+    
+    func didSelectViewModel() {
+        router?.showFilmPage()
     }
 }
 

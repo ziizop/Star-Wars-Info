@@ -19,7 +19,8 @@ extension FilmsInterator: FilmsInteratorInput {
     
     func makeData() {
         let apiMager = APIManager.shared
-        let urlString = "https://swapi.dev/api/films/"
+        let loading = LoadingDataFromAPI.shared
+        let urlString = "http://swapi.dev/api/people/?page=1"
         apiMager.postRequest(urlString: urlString) { [weak self] result in
             guard let self = self else { return }
             switch result {
@@ -28,8 +29,8 @@ extension FilmsInterator: FilmsInteratorInput {
                 self.presenter?.fetchSections(data)
                 print(data)                
                 // let dataInfo = data.results
-                apiMager.loadingImageInBanner(dataInfo) { [weak self] result in
-                    guard let self = self else { return }
+                loading.loadingImageInBanner(dataInfo) { [weak self] result in
+                    guard let self = self  else { return }
                     switch result {
                     case .success(let data):
                         self.presenter?.fetchImages(data)

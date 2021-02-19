@@ -5,7 +5,7 @@ protocol FilmViewOutput {
     func viewDidLoad()
     func numberOfRowsInSection() -> Int
     func mainCellForRowAt(index: Int) -> FilmsDataInfo
-    func didSelectViewModel(index: Int)
+    func didSelectViewModel()
     func didSelectImageRow(index: Int) -> UIImage
     
 }
@@ -111,7 +111,7 @@ extension FilmsView: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
+        presenter?.didSelectViewModel()
         }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

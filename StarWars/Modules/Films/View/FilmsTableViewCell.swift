@@ -19,20 +19,20 @@ class FilmsTableViewCell: UITableViewCell {
         return view 
     }()
     
-    private lazy var bannerImageView: UIImageView = {
+     lazy var bannerImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = #imageLiteral(resourceName: "Episod 3")
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
-    private lazy var episodName: UILabel = {
+     lazy var episodName: UILabel = {
        let label = UILabel()
         label.font = .systemFont(ofSize: 20, weight: .light)
         return label
     }()
     
-    private lazy var episodNumber: UILabel = {
+     lazy var episodNumber: UILabel = {
        let label = UILabel()
         label.font = .systemFont(ofSize: 20, weight: .light)
         return label

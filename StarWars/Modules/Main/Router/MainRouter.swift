@@ -3,6 +3,7 @@ import  UIKit
 protocol MainRouterInput {
     
     func showFilmsFormWithMain()
+    func showPeopleFromMain()
     
 }
 
@@ -15,5 +16,11 @@ extension MainRouter: MainRouterInput {
         
         let filmAss = FilmsAssembly.assembly()
         view?.navigationController?.pushViewController(filmAss, animated: true)
+    }
+    
+    func showPeopleFromMain() {
+        
+        let people = PeoplePageAssembly.assembly()
+        view?.navigationController?.pushViewController(people, animated: true)
     }
 }
