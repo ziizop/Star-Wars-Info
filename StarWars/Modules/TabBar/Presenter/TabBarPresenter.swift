@@ -11,12 +11,8 @@ extension TabBarPresenter: TabBarViewOutput {
     func viewDidLoad() {
         
     }
-    
-    
-    
 }
 
 extension TabBarPresenter: TabBarInteractorOutput {
-    
     
 }

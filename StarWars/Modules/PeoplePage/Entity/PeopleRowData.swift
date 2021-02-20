@@ -1,6 +1,5 @@
-
-struct PeopleRowData: Decodable {
-    var peopleName: String
+struct PeopleRowData: Codable {
+    var name: String
     var height: String
     var mass: String
     var hair_color: String

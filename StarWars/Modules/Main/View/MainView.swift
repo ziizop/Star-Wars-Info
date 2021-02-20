@@ -48,7 +48,7 @@ final class MainView: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
-
+        
         // Do any additional setup after loading the view.
     }
     
@@ -76,19 +76,19 @@ final class MainView: BaseViewController {
         // temp fix
         let movieModule = FilmPageAssembly.assembly()
         navigationController?.pushViewController(movieModule, animated: true)
-    
+        
     }
 }
 
-    // MARK: - MainViewInput
+// MARK: - MainViewInput
 extension MainView: MainViewInput {
-
+    
     func reloadTableView() {
         tableView.reloadData()
     }
 }
 
-    // MARK: - UITableViewDelegate
+// MARK: - UITableViewDelegate
 
 extension MainView: UITableViewDelegate {
     
@@ -103,7 +103,7 @@ extension MainView: UITableViewDelegate {
         return presenter?.titleForHeaderInSection(section: mainSection)
     }
 }
-    // MARK: - UITableViewDataSource
+// MARK: - UITableViewDataSource
 extension MainView: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {

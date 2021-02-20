@@ -2,18 +2,15 @@ import  UIKit
 
 protocol PeoplePageViewInput: class {
     func showLoading()
-    
     func hideLoading()
-    
     func reloadData()
-    
 }
 
 protocol PeoplePageViewOutput {
-    
     func viewDidLoad()
     func numberOfRowsPeopleInSection() -> Int
     func cellPeopleForRowAt(row:Int) -> PeopleRowData
+    func didLoadPeopleImage(row: Int) -> UIImage
 }
 
 final class PeoplePageView: BaseViewController {
@@ -51,9 +48,10 @@ final class PeoplePageView: BaseViewController {
         }
     }
 }
-    // MARK: - PeoplePAgeViewInput
+// MARK: - PeoplePAgeViewInput
 
 extension PeoplePageView: PeoplePageViewInput {
+    
     func showLoading() {
         showActivityIndicator()
     }
@@ -68,17 +66,22 @@ extension PeoplePageView: PeoplePageViewInput {
     
     
 }
-    // MARK: - UITableViewDelegate
+// MARK: - UITableViewDelegate
 
 extension PeoplePageView: UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        100
+    }
 }
 // MARK: - UITableViewDataSource
 
 extension PeoplePageView: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         presenter?.numberOfRowsPeopleInSection() ?? 0
     }
@@ -86,16 +89,14 @@ extension PeoplePageView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard
             let cell = tableView.dequeueReusableCell(withIdentifier: PeoplePageTableViewCell.reuseIdentifier, for: indexPath) as? PeoplePageTableViewCell,
-            let text = presenter?.cellPeopleForRowAt(row: indexPath.row)
-            else
+            let text = presenter?.cellPeopleForRowAt(row: indexPath.row),
+            let image = presenter?.didLoadPeopleImage(row: indexPath.row)
+        else
         {
             return UITableViewCell()
         }
-        
-        cell.textLabel?.text = text.peopleName
+        cell.config(text.name, image)
         return cell
     }
-    
-    
 }
 

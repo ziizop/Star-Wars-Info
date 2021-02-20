@@ -3,6 +3,7 @@ import UIKit
 class LoadingDataFromAPI {
     
    static let shared: LoadingDataFromAPI = LoadingDataFromAPI()
+    // MARK: - Films images loading
     
     func loadingImageInBanner(_ data: [FilmsDataInfo], completion: @escaping (Result<UIImage, Error>) -> Void) {
         

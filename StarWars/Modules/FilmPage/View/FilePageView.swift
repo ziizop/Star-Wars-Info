@@ -190,9 +190,9 @@ final class FilmPageView: BaseViewController {
         actorsTableView.snp.makeConstraints { make in
             make.leading.top.trailing.bottom.equalToSuperview()
         }
-
-//        navigationItem.title = "Эпизод"
-//        navigationController?.navigationBar.prefersLargeTitles = true
+        
+        //        navigationItem.title = "Эпизод"
+        //        navigationController?.navigationBar.prefersLargeTitles = true
     }
 }
 
@@ -200,7 +200,7 @@ extension FilmPageView: FilmPageViewInput {
     
 }
 
-    // MARK: - ScrollView Delegete
+// MARK: - ScrollView Delegete
 
 extension FilmPageView: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -220,13 +220,13 @@ extension FilmPageView: UIScrollViewDelegate {
     }
 }
 
-    // MARK: - UITableViewDelegate
+// MARK: - UITableViewDelegate
 
 extension FilmPageView: UITableViewDelegate {
     
 }
 
-    // MARK: - UITableViewDataSource
+// MARK: - UITableViewDataSource
 
 extension FilmPageView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

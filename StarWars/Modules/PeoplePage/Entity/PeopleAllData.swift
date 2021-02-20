@@ -1,4 +1,4 @@
-struct PeopleAllData: Decodable {
+struct PeopleAllData: Codable {
     var count: Int
     var results: [PeopleRowData]
 }

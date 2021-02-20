@@ -20,7 +20,7 @@ extension FilmsInterator: FilmsInteratorInput {
     func makeData() {
         let apiMager = APIManager.shared
         let loading = LoadingDataFromAPI.shared
-        let urlString = "http://swapi.dev/api/people/?page=1"
+        let urlString = "https://swapi.dev/api/films/"
         apiMager.postRequest(urlString: urlString) { [weak self] result in
             guard let self = self else { return }
             switch result {

@@ -80,7 +80,6 @@ extension FilmsView: FilmViewInput {
     func reloadData() {
         tableView.reloadData()
     }
-    
 }
 
 // MARK: - UITableViewDataSource
