@@ -9,9 +9,9 @@ import UIKit
 
 final class FilmPageAssembly {
     
-    static func assembly() -> UIViewController  {
+    static func assembly(filmDataInfo: FilmsDataInfo, image: UIImage) -> UIViewController  {
         
-        let view = FilmPageView()
+        let view = FilmPageView(filmDataInfo: filmDataInfo, image: image)
         let presenter = FilmPagePresenter()
         let interactor = FilmPageInteractor()
         let router = FilmPageRouter()

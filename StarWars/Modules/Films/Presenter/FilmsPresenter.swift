@@ -1,9 +1,9 @@
 import UIKit
 
 final class FilmsPresenter {
-    weak var view: FilmViewInput?
+    weak var view: FilmViewInput? = nil
     var interactor: FilmsInteratorInput?
-    var router: FilmsRouterInput?
+    weak var router: FilmsRouterInput?
     private var episodesArray: [FilmsDataInfo] = []
     private var episodeImage: [UIImage] = []
     private var number: [Int] = []
@@ -45,4 +45,18 @@ extension FilmsPresenter: FilmsInteratorOutput {
         episodeImage.append(image)
         view?.reloadData()
     }
+}
+
+extension FilmsPresenter: FilmsRouterOutput {
+    func dataTransfer() -> FilmsDataInfo {
+        mainCellForRowAt(index: 1)
+    }
+    
+    func imageTransfer() -> UIImage {
+        didSelectImageRow(index: 1)
+    }
+    
+    
+    
+    
 }

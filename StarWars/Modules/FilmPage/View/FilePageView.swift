@@ -81,9 +81,11 @@ final class FilmPageView: BaseViewController {
         return label
     }()
     
+    //MARK: - People properties
+    
     private lazy var actorsView: UIView = {
         let view = UIView()
-        view.backgroundColor = .red
+        view.backgroundColor = .white
         return view
     }()
     
@@ -98,12 +100,54 @@ final class FilmPageView: BaseViewController {
         
         tableView.register(cellWithClass: FilmPageTableViewCell.self)
         
-        tableView.dataSource = self
-        tableView.delegate = self
+//        tableView.dataSource = self
+//        tableView.delegate = self
         
         return tableView
         
     }()
+    
+    private lazy var actorsCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
+        layout.itemSize = CGSize(width: 100, height: 100)
+        layout.scrollDirection = .horizontal
+        var collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        if #available(iOS 13.0, *) {
+            collection.backgroundColor = .systemBackground
+        } else {
+            collection.backgroundColor = .white
+        }
+        collection.registers(cellWithClass: FilmPageCollectionViewCell.self)
+        collection.delegate = self
+        collection.dataSource = self
+        return collection
+    }()
+    
+    private lazy var actorsName: UILabel = {
+        let label = UILabel()
+        label.text = "Actors:"
+        label.font = .systemFont(ofSize: 18, weight: .light)
+        label.alpha = 0.6
+        return label
+    }()
+    
+    private var filmDataInfo: FilmsDataInfo?
+    private var image: UIImage? {
+        didSet {
+            self.bannerdImage.image = image
+        }
+    }
+    
+    init(filmDataInfo:FilmsDataInfo, image: UIImage) {
+        super.init(nibName: nil, bundle: nil)
+        self.filmDataInfo = filmDataInfo
+        self.image = image
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -181,15 +225,28 @@ final class FilmPageView: BaseViewController {
         actorsView.snp.makeConstraints { make in
             make.top.equalTo(descriptionEpisodLable.snp.bottom).offset(20)
             make.leading.trailing.equalToSuperview()
-            make.height.equalTo(300)
+            make.height.equalTo(150)
             make.width.equalToSuperview()
-            make.bottom.equalToSuperview()
+            make.bottom.equalToSuperview().inset(40)
         }
         
-        actorsView.addSubview(actorsTableView)
-        actorsTableView.snp.makeConstraints { make in
-            make.leading.top.trailing.bottom.equalToSuperview()
+        actorsView.addSubview(actorsName)
+        actorsView.addSubview(actorsCollectionView)
+        
+        actorsName.snp.makeConstraints { make in
+            make.leading.top.equalToSuperview().inset(10)
         }
+        
+        actorsCollectionView.snp.makeConstraints { make in
+            make.top.equalTo(actorsName.snp.bottom).offset(5)
+            make.leading.trailing.bottom.equalToSuperview()
+        }
+        
+        bannerdImage.image = image.self
+        
+        episodName.text = "Episode \(filmDataInfo!.episode_id): \(filmDataInfo!.title)"
+        dateCreated.text = filmDataInfo?.release_date
+        descriptionEpisodLable.text = filmDataInfo?.opening_crawl
         
         //        navigationItem.title = "Эпизод"
         //        navigationController?.navigationBar.prefersLargeTitles = true
@@ -220,22 +277,28 @@ extension FilmPageView: UIScrollViewDelegate {
     }
 }
 
-// MARK: - UITableViewDelegate
+// MARK: - UICollectionViewDelegate
 
-extension FilmPageView: UITableViewDelegate {
+extension FilmPageView: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+    }
     
 }
 
-// MARK: - UITableViewDataSource
+// MARK: - UICollectionViewDataSource
 
-extension FilmPageView: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+extension FilmPageView: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         10
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: FilmPageTableViewCell.reuseIdentifier, for: indexPath) as? FilmPageTableViewCell else { return UITableViewCell() }
-        cell.textLabel?.text = " actors: \(indexPath) "
-        return cell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let myCell = collectionView.dequeueReusableCell(withReuseIdentifier: FilmPageCollectionViewCell.reuseIdentifier, for: indexPath) as? FilmPageCollectionViewCell else { return UICollectionViewCell()
+        }
+        
+        return myCell
     }
+   
 }

@@ -7,7 +7,6 @@ protocol FilmViewOutput {
     func mainCellForRowAt(index: Int) -> FilmsDataInfo
     func didSelectViewModel()
     func didSelectImageRow(index: Int) -> UIImage
-    
 }
 
 protocol FilmViewInput: class {
@@ -22,7 +21,7 @@ protocol FilmViewInput: class {
 final class FilmsView: BaseViewController {
     
     var episodes: [FilmsDataInfo]?
-    
+
     private lazy var tableView: UITableView = {
         
         var tableView: UITableView
@@ -110,8 +109,12 @@ extension FilmsView: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        presenter?.didSelectViewModel()
-        }
+        guard let data = presenter?.mainCellForRowAt(index: indexPath.row) else { return }
+        guard let image = presenter?.didSelectImageRow(index: indexPath.row) else { return }
+        let filmPageModule = FilmPageAssembly.assembly(filmDataInfo: data, image: image)
+        navigationController?.pushViewController(filmPageModule, animated: true)
+//        presenter?.didSelectViewModel()
+    }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         

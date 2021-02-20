@@ -1,3 +1,10 @@
+//
+//  PeoplePageTableViewCell.swift
+//  StarWars
+//
+//  Created by Anastas Smekh on 19.02.2021.
+//
+
 import UIKit
 
 class PeoplePageTableViewCell: UITableViewCell {
@@ -39,6 +46,7 @@ class PeoplePageTableViewCell: UITableViewCell {
     }
     
     func config(_ name: String, _ image: UIImage) {
+        
         contentView.addSubview(peopleName)
         contentView.addSubview(avatarPeople)
         addSubview(containerView)
@@ -56,5 +64,6 @@ class PeoplePageTableViewCell: UITableViewCell {
         
         peopleName.text = name
         avatarPeople.image = image
+
     }
 }

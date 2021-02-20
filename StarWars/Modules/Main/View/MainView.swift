@@ -74,8 +74,8 @@ final class MainView: BaseViewController {
     
     @objc private func findButtonTapped(_ sender: UIButton) {
         // temp fix
-        let movieModule = FilmPageAssembly.assembly()
-        navigationController?.pushViewController(movieModule, animated: true)
+        // let movieModule = FilmPageAssembly.assembly()
+        // navigationController?.pushViewController(movieModule, animated: true)
         
     }
 }
