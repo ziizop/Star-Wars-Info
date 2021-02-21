@@ -40,11 +40,6 @@ final class MainView: BaseViewController {
         return tableView
     }()
     
-    private lazy var findButton: ButtonView = {
-        let buttonView = ButtonView(title: "Найти!", target: self, selector: #selector(findButtonTapped(_:)))
-        return buttonView
-    }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
@@ -58,25 +53,11 @@ final class MainView: BaseViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         
         view.addSubview(tableView)
-        view.addSubview(findButton)
         presenter?.viewDidLoad()
         
         tableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        
-        findButton.snp.makeConstraints { make in
-            make.bottom.equalToSuperview().inset(130)
-            make.leading.trailing.equalToSuperview().inset(20)
-            make.height.equalTo(58)
-        }
-    }
-    
-    @objc private func findButtonTapped(_ sender: UIButton) {
-        // temp fix
-        // let movieModule = FilmPageAssembly.assembly()
-        // navigationController?.pushViewController(movieModule, animated: true)
-        
     }
 }
 

@@ -82,4 +82,44 @@ final class APIManager {
             }
         }
     }
+    
+    func postRequestCharacters(_ url: String, comletion: @escaping (Result< PeopleRowData,Error>) -> Void) {
+        guard let url = URL(string: url) else { return  }
+        
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            DispatchQueue.main.async {
+                
+                if let error = error {
+                    print(error.localizedDescription)
+                    comletion(.failure(error))
+                    return
+                }
+                
+                guard let data = data else {return}
+                
+                do {
+                    let people = try JSONDecoder().decode(PeopleRowData.self, from: data)
+                    comletion(.success(people))
+                } catch let jsonError {
+                    print("Ошибка кодеровки JSON", jsonError)
+                    comletion(.failure(jsonError))
+                }
+            }
+        }.resume()
+    }
+    
+    func getCharactersImages(_ peopleID: Int, comletion: @escaping (Result< UIImage, Error >) -> Void) {
+        let id = peopleID
+        print("ID People: \(id)")
+        let urlString = "https://starwars-visualguide.com/assets/img/characters/\(id).jpg"
+        guard let url = URL(string: urlString) else { return }
+        do {
+            let imageData = try Data(contentsOf: url)
+            guard let image = UIImage(data: imageData) else { return }
+            comletion(.success(image))
+        } catch let errorData {
+            print(errorData.localizedDescription)
+            comletion(.failure(errorData))
+        }
+    }
 }

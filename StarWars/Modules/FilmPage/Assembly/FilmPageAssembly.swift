@@ -13,7 +13,7 @@ final class FilmPageAssembly {
         
         let view = FilmPageView(filmDataInfo: filmDataInfo, image: image)
         let presenter = FilmPagePresenter()
-        let interactor = FilmPageInteractor()
+        let interactor = FilmPageInteractor(filmsDataInfo: filmDataInfo)
         let router = FilmPageRouter()
         
         view.presenter = presenter

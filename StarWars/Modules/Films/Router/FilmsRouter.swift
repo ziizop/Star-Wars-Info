@@ -1,26 +1,26 @@
 import UIKit
 
-protocol FilmsRouterOutput {
-    func  dataTransfer() -> FilmsDataInfo
-    func imageTransfer() -> UIImage
+protocol FilmsRouterOutput: class {
+    func  dataTransfer(index: Int) -> FilmsDataInfo
+    func imageTransfer(index: Int) -> UIImage
 }
 
-protocol FilmsRouterInput: class {
-    func showFilmPage()
+protocol FilmsRouterInput {
+    func showFilmPage(index: Int)
 }
 
 final class FilmsRouter {
     
     weak var view: FilmsView?
-    var presenter: FilmsRouterOutput?
+    weak var presenter: FilmsRouterOutput?
 }
 
 extension FilmsRouter: FilmsRouterInput {
-    func showFilmPage() {
-//        print("Зашли")
-//        let data = (presenter?.dataTransfer())!
-//        let image = (presenter?.imageTransfer())!
-//         let filmPage = FilmPageAssembly.assembly()
-//         view?.navigationController?.pushViewController(filmPage, animated: true)
+    func showFilmPage(index: Int) {
+        print("Зашли")
+        guard let data = presenter?.dataTransfer(index: index) else { return }
+        guard let image = presenter?.imageTransfer(index: index) else { return }
+        let filmPage = FilmPageAssembly.assembly(filmDataInfo: data, image: image)
+        view?.navigationController?.pushViewController(filmPage, animated: true)
     }
 }

@@ -7,4 +7,5 @@ struct FilmsDataInfo: Decodable {
     var director: String
     var producer: String
     var release_date: String
+    var characters: [String]
 }

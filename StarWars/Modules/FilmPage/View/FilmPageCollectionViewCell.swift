@@ -20,12 +20,12 @@ class FilmPageCollectionViewCell: UICollectionViewCell {
         return image
     }()
     
-//    private lazy var namePeople: UILabel = {
-//        let label = UILabel()
-//        label.font = .systemFont(ofSize: 20, weight: .light)
-//        label.text = "Test"
-//        return label
-//    }()
+    private lazy var namePeople: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 10, weight: .light)
+        label.text = "Test"
+        return label
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -35,15 +35,20 @@ class FilmPageCollectionViewCell: UICollectionViewCell {
             make.width.height.equalTo(80)
         }
         
-//        self.contentView.addSubview(namePeople)
-//        namePeople.snp.makeConstraints { make in
-//            make.centerX.equalToSuperview()
-//            make.top.equalTo(imagePeople.snp.bottom).inset(10)
-//        }
+        self.contentView.addSubview(namePeople)
+        namePeople.snp.makeConstraints { make in
+            make.top.equalTo(imagePeople.snp.bottom).offset(5)
+            make.centerX.equalTo(imagePeople)
+        }
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func addData(name: String, image: UIImage) {
+        namePeople.text = name
+        imagePeople.image = image
     }
     
     

@@ -5,7 +5,7 @@ protocol FilmViewOutput {
     func viewDidLoad()
     func numberOfRowsInSection() -> Int
     func mainCellForRowAt(index: Int) -> FilmsDataInfo
-    func didSelectViewModel()
+    func didSelectViewModel(index: Int)
     func didSelectImageRow(index: Int) -> UIImage
 }
 
@@ -21,7 +21,7 @@ protocol FilmViewInput: class {
 final class FilmsView: BaseViewController {
     
     var episodes: [FilmsDataInfo]?
-
+    
     private lazy var tableView: UITableView = {
         
         var tableView: UITableView
@@ -61,7 +61,7 @@ final class FilmsView: BaseViewController {
         }
         
         navigationItem.title = "Кинохроника"
-//        navigationController?.navigationBar.prefersLargeTitles = true
+        //        navigationController?.navigationBar.prefersLargeTitles = true
     }
 }
 
@@ -96,7 +96,7 @@ extension FilmsView: UITableViewDataSource {
         else {
             return UITableViewCell()
         }
-        
+        print(episode.characters)
         cell.configure(number: episode.episode_id, nameEpisod: episode.title, imageBanner: banner)
         
         return cell
@@ -109,11 +109,7 @@ extension FilmsView: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        guard let data = presenter?.mainCellForRowAt(index: indexPath.row) else { return }
-        guard let image = presenter?.didSelectImageRow(index: indexPath.row) else { return }
-        let filmPageModule = FilmPageAssembly.assembly(filmDataInfo: data, image: image)
-        navigationController?.pushViewController(filmPageModule, animated: true)
-//        presenter?.didSelectViewModel()
+        presenter?.didSelectViewModel(index: indexPath.row)
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

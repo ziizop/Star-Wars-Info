@@ -27,7 +27,6 @@ extension FilmsInterator: FilmsInteratorInput {
             case .success(let data):
                 let dataInfo = data.results
                 self.presenter?.fetchSections(data)
-                print(data)                
                 // let dataInfo = data.results
                 loading.loadingImageInBanner(dataInfo) { [weak self] result in
                     guard let self = self  else { return }

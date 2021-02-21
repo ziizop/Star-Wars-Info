@@ -3,7 +3,7 @@ import UIKit
 final class FilmsPresenter {
     weak var view: FilmViewInput? = nil
     var interactor: FilmsInteratorInput?
-    weak var router: FilmsRouterInput?
+    var router: FilmsRouterInput?
     private var episodesArray: [FilmsDataInfo] = []
     private var episodeImage: [UIImage] = []
     private var number: [Int] = []
@@ -28,9 +28,9 @@ extension FilmsPresenter: FilmViewOutput {
         episodeImage[index]
     }
     
-    func didSelectViewModel() {
-        router?.showFilmPage()
-    }
+    func didSelectViewModel(index: Int) {
+        router?.showFilmPage(index: index)
+        }
 }
 
 extension FilmsPresenter: FilmsInteratorOutput {
@@ -48,15 +48,11 @@ extension FilmsPresenter: FilmsInteratorOutput {
 }
 
 extension FilmsPresenter: FilmsRouterOutput {
-    func dataTransfer() -> FilmsDataInfo {
-        mainCellForRowAt(index: 1)
+    func dataTransfer(index: Int) -> FilmsDataInfo {
+        mainCellForRowAt(index: index)
     }
     
-    func imageTransfer() -> UIImage {
-        didSelectImageRow(index: 1)
+    func imageTransfer(index: Int) -> UIImage {
+        didSelectImageRow(index: index)
     }
-    
-    
-    
-    
 }

@@ -8,11 +8,15 @@
 import UIKit
 
 protocol FilmPageViewOutput {
-    
+    func viewDidLoad()
+    func numberOfItemsInSection() -> Int
+    func cellForItemAt(index: Int) -> PeopleRowData
+    func loadImage(index: Int) -> UIImage
 }
 
 protocol FilmPageViewInput: class  {
     
+    func reloadData()
 }
 
 final class FilmPageView: BaseViewController {
@@ -109,7 +113,7 @@ final class FilmPageView: BaseViewController {
     
     private lazy var actorsCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 40, right: 10)
         layout.itemSize = CGSize(width: 100, height: 100)
         layout.scrollDirection = .horizontal
         var collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -126,7 +130,7 @@ final class FilmPageView: BaseViewController {
     
     private lazy var actorsName: UILabel = {
         let label = UILabel()
-        label.text = "Actors:"
+        label.text = "Characters:"
         label.font = .systemFont(ofSize: 18, weight: .light)
         label.alpha = 0.6
         return label
@@ -163,6 +167,7 @@ final class FilmPageView: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter?.viewDidLoad()
         
         configure()
     }
@@ -254,6 +259,10 @@ final class FilmPageView: BaseViewController {
 }
 
 extension FilmPageView: FilmPageViewInput {
+    func reloadData() {
+        actorsCollectionView.reloadData()
+    }
+    
     
 }
 
@@ -291,13 +300,19 @@ extension FilmPageView: UICollectionViewDelegate {
 
 extension FilmPageView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        10
+        presenter?.numberOfItemsInSection() ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let myCell = collectionView.dequeueReusableCell(withReuseIdentifier: FilmPageCollectionViewCell.reuseIdentifier, for: indexPath) as? FilmPageCollectionViewCell else { return UICollectionViewCell()
+        guard
+            let myCell = collectionView.dequeueReusableCell(withReuseIdentifier: FilmPageCollectionViewCell.reuseIdentifier, for: indexPath) as? FilmPageCollectionViewCell,
+            let data = presenter?.cellForItemAt(index: indexPath.row),
+            let image = presenter?.loadImage(index: indexPath.row)
+            else
+        {
+            return UICollectionViewCell()
         }
-        
+        myCell.addData(name: data.name, image: image)
         return myCell
     }
    
